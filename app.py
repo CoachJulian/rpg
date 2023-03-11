@@ -36,6 +36,29 @@ def verify_user(email,password):
     conn.close()
     return user
 
+@app.route('/delete_user' , methods=['POST'])
+
+def delete_user():
+    email = request.form['email']
+    password = request.form['password']
+
+
+    conn =sqlite3.connect('./static/data/example_database.db')
+
+    #cursor object which commands are executed by?
+    curs = conn.cursor()
+    curs.execute("DELETE FROM users WHERE email=(?) and password=(?)",[email,password])
+    print("deleted user")
+
+
+    conn.commit()
+    conn.close()
+    return render_template('index.html')
+
+    
+
+
+
 
 
 @app.route('/login_user' , methods=['POST'])
@@ -47,11 +70,12 @@ def login_user():
     
     data = {}
     user = verify_user(email, password)
-    bucket= user['name']
+    
     
     #print(user)
     
     if user:
+        bucket= user['name']
         char_class= grab_stats(bucket)
         print(char_class)
         data = {
@@ -72,7 +96,7 @@ def login_user():
         }
         #no user redirects back to login
         #print(data)
-        return render_template('login.html', data=data)
+        return render_template('index.html', data=data)
 def grab_stats(user_stats):
     conn=sqlite3.connect('./static/data/example_database.db')
 

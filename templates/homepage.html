@@ -5,12 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Coolest RPG Ever</title>
 </head>
 
 <body>
     <h1> Hi {{ data.name}}</h1>
     <p> you are a {{data.class}}</p>
+    <br>
+
+
+    <div class=" delete">
+        <form action="delete_user" method="POST">
+            <input type="email" id="email-input" name="email" placeholder=" email?">
+            <br>
+            <input type="password" id="pw-input" name="password" placeholder="enter a password">
+            <br>
+            <button type="submit">delete account</button>
+        </form>
+    </div>
 </body>
 
 </html>
