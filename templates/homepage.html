@@ -23,6 +23,26 @@
             <button type="submit">delete account</button>
         </form>
     </div>
+
+
+
+
+
+    <div class="edit">
+        <p> Change Class Below </p>
+        <form action="edit_user" method="POST">
+            <input type = "hidden" name="rowid" value= "{{data['rowid']}}" >
+            <input type="text" id="char-class" name="character_class" placeholer="type class">
+            <button type="submit">edit account</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
 </body>
 
 </html>
